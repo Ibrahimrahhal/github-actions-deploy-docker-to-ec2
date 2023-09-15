@@ -352,7 +352,7 @@ runs:
       
     - name: Deploy with BitOps
       id: deploy
-      uses: bitovi/github-actions-commons@add-ecr-registry
+      uses: bitovi/github-actions-commons@Ansible-docker-compose-bump
       with:
         # Current repo vars
         gh_action_repo: ${{ github.action_path }}
