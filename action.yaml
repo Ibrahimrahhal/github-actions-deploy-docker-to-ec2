@@ -389,7 +389,7 @@ runs:
       
     - name: Deploy with BitOps
       id: deploy
-      uses: bitovi/github-actions-commons@split-ecr
+      uses: bitovi/github-actions-commons@add-rds
       #uses: bitovi/github-actions-commons@main
       with:
         # Current repo vars
