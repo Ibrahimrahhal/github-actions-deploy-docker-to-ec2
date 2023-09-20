@@ -302,7 +302,8 @@ inputs:
     description: 'Set of log types to enable for exporting to CloudWatch logs.'
     required: false
 
-  # AWS AURORA  aws_aurora_enable:
+  # AWS AURORA
+  aws_aurora_enable:
     description: 'Set to "true" to enable a postgres database'
     required: false
   aws_aurora_engine: 
