@@ -352,7 +352,7 @@ runs:
       
     - name: Deploy with BitOps
       id: deploy
-      uses: bitovi/github-actions-commons@Ansible-docker-compose-bump
+      uses: bitovi/github-actions-commons@split-ecr
       #uses: bitovi/github-actions-commons@main
       with:
         # Current repo vars
