@@ -64,6 +64,12 @@ inputs:
   tf_state_bucket_destroy:
     description: 'Force purge and deletion of S3 bucket defined. Any file contained there will be destroyed. `stack_destroy` must also be `true`'
     required: false
+  tf_state_file_name:
+    description: 'Change this to be anything you want to. Carefull to be consistent here. A missing file could trigger recreation, or stepping over destruction of non-defined objects.'
+    required: false
+  tf_state_file_name_append:
+    description: 'Append a string to the tf-state-file. Setting this to `unique` will generate `tf-state-aws-unique`. Can co-exist with the tf_state_file_name variable. '
+    required: false
   aws_resource_identifier:
     description: 'Set to override the AWS resource identifier for the deployment.  Defaults to `${org}-{repo}-{branch}`.  Use with destroy to destroy specific resources.'
     required: false
@@ -391,7 +397,7 @@ runs:
     - name: Deploy with BitOps
       id: deploy
       #uses: bitovi/github-actions-commons@add-rds
-      uses: bitovi/github-actions-commons@add-tf-state-file-name-handling
+      uses: bitovi/github-actions-commons@ecs-fargate
       with:
         # Current repo vars
         gh_action_repo: ${{ github.action_path }}
@@ -418,6 +424,8 @@ runs:
         # Action main inputs
         checkout: ${{ inputs.checkout }}
         tf_stack_destroy: ${{ inputs.stack_destroy }}
+        tf_state_file_name: ${{ inputs.tf_state_file_name }}
+        tf_state_file_name_append: ${{ inputs.tf_state_file_name_append }}
         tf_state_bucket: ${{ inputs.tf_state_bucket }}
         tf_state_bucket_destroy: ${{ inputs.tf_state_bucket_destroy }}
         tf_state_bucket_provider: 'aws'
